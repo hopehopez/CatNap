@@ -16,6 +16,8 @@ struct PhysicsCategory {
     static let Bed: UInt32 = 0b100 //4
     static let Edge: UInt32 = 0b1000 //8
     static let Label: UInt32 = 0b10000 //16
+    static let Spring: UInt32 = 0b100000 //32
+    static let Hook: UInt32 = 0b1000000 //64
 }
 
 protocol CustomNodeEvents {
@@ -31,6 +33,9 @@ class GameScene: SKScene {
     var bedNode: BedNode!
     var catNode: CatNode!
     var playable = true
+    var currentLevel:Int = 0
+    var hookNode: HookNode?
+    
 
     override func didMove(to view: SKView) {
         
@@ -57,6 +62,14 @@ class GameScene: SKScene {
         
         SKTAudio.sharedInstance().playBackgroundMusic(filename: "backgroundMusic.mp3")
         
+        hookNode = childNode(withName: "hookBase") as? HookNode
+        
+    }
+    class func level(levelNum: Int) -> GameScene? {
+        let scene = GameScene(fileNamed: "Level\(levelNum)")!
+        scene.currentLevel = levelNum
+        scene.scaleMode = .aspectFill
+        return scene
     }
     
     func inGameMessage(message: String) {
@@ -66,9 +79,8 @@ class GameScene: SKScene {
     }
     
     @objc func newGame() {
-        let scene = SKScene(fileNamed: "GameScene")
-        scene?.scaleMode = scaleMode
-        view?.presentScene(scene)
+        
+        view?.presentScene(GameScene.level(levelNum: currentLevel))
     }
     
     func lose() {
@@ -96,6 +108,14 @@ class GameScene: SKScene {
 
         catNode.curlAt(scenePoint: bedNode.position)
     }
+    
+    override func didSimulatePhysics() {
+        if playable && hookNode?.isHooked != true {
+            if fabs(catNode.parent!.zRotation) > CGFloat(25).degreesToRadians() {
+                lose()
+            }
+        }
+    }
 }
 
 extension GameScene: SKPhysicsContactDelegate {
@@ -111,6 +131,8 @@ extension GameScene: SKPhysicsContactDelegate {
         } else if collsion == PhysicsCategory.Cat | PhysicsCategory.Edge {
             print("fail")
             lose()
+        } else if collsion == PhysicsCategory.Cat | PhysicsCategory.Hook && hookNode?.isHooked == false {
+            hookNode?.hookCat(catNode: catNode)
         }
     }
     func didEnd(_ contact: SKPhysicsContact) {

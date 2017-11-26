@@ -8,7 +8,11 @@
 
 import SpriteKit
 
-class CatNode: SKSpriteNode, CustomNodeEvents {
+let kCatTappedNotification = "kCatTappedNotification"
+
+
+class CatNode: SKSpriteNode, CustomNodeEvents , InteractiveNode{
+    
 
     func didMoveToScene() {
         print("cat added to scene")
@@ -17,9 +21,14 @@ class CatNode: SKSpriteNode, CustomNodeEvents {
         parent?.physicsBody = SKPhysicsBody(texture: catBodyTexture, size: catBodyTexture.size())
         
         parent?.physicsBody?.categoryBitMask = PhysicsCategory.Cat
-        parent?.physicsBody?.collisionBitMask = PhysicsCategory.Block | PhysicsCategory.Edge
-        parent?.physicsBody?.contactTestBitMask = PhysicsCategory.Bed | PhysicsCategory.Edge
+        parent?.physicsBody?.collisionBitMask = PhysicsCategory.Block | PhysicsCategory.Edge | PhysicsCategory.Spring
+        parent?.physicsBody?.contactTestBitMask = PhysicsCategory.Bed | PhysicsCategory.Edge | PhysicsCategory.Hook
+        
+        isUserInteractionEnabled = true
+        
     }
+    
+   
     
     func wakeUp() {
         for child in children {
@@ -29,7 +38,7 @@ class CatNode: SKSpriteNode, CustomNodeEvents {
         texture = nil
         color = UIColor.clear
         
-        let catAwake = SKSpriteNode(fileNamed: "CatWakeUp")!.childNode(withName: "cat_a3wwake")!
+        let catAwake = SKSpriteNode(fileNamed: "CatWakeUp")!.childNode(withName: "cat_awake")!
         
         catAwake.move(toParent: self)
         catAwake.position = CGPoint(x: -30, y: 100)
@@ -58,4 +67,16 @@ class CatNode: SKSpriteNode, CustomNodeEvents {
             ]))
         
     }
+    
+    func interact() {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: kCatTappedNotification), object: nil)
+        
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        interact()
+    }
+    
+    
 }
