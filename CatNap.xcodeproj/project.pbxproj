@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C08A8B11FCAFC4F001BBD15 /* Level3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7C08A8B01FCAFC4F001BBD15 /* Level3.sks */; };
+		7C08A8B31FCAFF7F001BBD15 /* StoneNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C08A8B21FCAFF7F001BBD15 /* StoneNode.swift */; };
+		7C08A8B51FCB07F2001BBD15 /* Level4.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7C08A8B41FCB07F2001BBD15 /* Level4.sks */; };
 		7C4123401FB345BE002A391A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C41233F1FB345BE002A391A /* AppDelegate.swift */; };
 		7C4123421FB345BE002A391A /* Level1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7C4123411FB345BE002A391A /* Level1.sks */; };
 		7C4123461FB345BE002A391A /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4123451FB345BE002A391A /* GameScene.swift */; };
@@ -44,6 +47,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C08A8B01FCAFC4F001BBD15 /* Level3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level3.sks; sourceTree = "<group>"; };
+		7C08A8B21FCAFF7F001BBD15 /* StoneNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoneNode.swift; sourceTree = "<group>"; };
+		7C08A8B41FCB07F2001BBD15 /* Level4.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level4.sks; sourceTree = "<group>"; };
 		7C41233C1FB345BE002A391A /* CatNap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatNap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C41233F1FB345BE002A391A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C4123411FB345BE002A391A /* Level1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1.sks; sourceTree = "<group>"; };
@@ -147,6 +153,8 @@
 				7C6E21321FBC802B001676F0 /* CatCurl.sks */,
 				7C6E21331FBC802B001676F0 /* CatWakeUp.sks */,
 				7CA5B69C1FB4A06A002A5FC8 /* Cat.sks */,
+				7C08A8B01FCAFC4F001BBD15 /* Level3.sks */,
+				7C08A8B41FCB07F2001BBD15 /* Level4.sks */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -179,6 +187,7 @@
 				7C6E21551FC31B88001676F0 /* BlockNode.swift */,
 				7CCAF7A51FC5CAE300EB6E12 /* SpringNode.swift */,
 				7CCAF7A71FC5D0E700EB6E12 /* HookNode.swift */,
+				7C08A8B21FCAFF7F001BBD15 /* StoneNode.swift */,
 			);
 			path = node;
 			sourceTree = "<group>";
@@ -249,9 +258,11 @@
 				7C6E21361FBC802B001676F0 /* CatWakeUp.sks in Resources */,
 				7C6E21351FBC802B001676F0 /* CatCurl.sks in Resources */,
 				7C41234D1FB345BE002A391A /* Assets.xcassets in Resources */,
+				7C08A8B51FCB07F2001BBD15 /* Level4.sks in Resources */,
 				7C4123611FB34719002A391A /* win.mp3 in Resources */,
 				7C41235F1FB34719002A391A /* mrreow.mp3 in Resources */,
 				7C41235E1FB34719002A391A /* lose.mp3 in Resources */,
+				7C08A8B11FCAFC4F001BBD15 /* Level3.sks in Resources */,
 				7C4123501FB345BE002A391A /* LaunchScreen.storyboard in Resources */,
 				7CCAF7A31FC5C6FF00EB6E12 /* Level2.sks in Resources */,
 				7CA5B69D1FB4A06A002A5FC8 /* Cat.sks in Resources */,
@@ -272,6 +283,7 @@
 				7C6E214D1FBDDD44001676F0 /* SKAction+Extensions.swift in Sources */,
 				7C4123461FB345BE002A391A /* GameScene.swift in Sources */,
 				7C6E21501FBDDD44001676F0 /* SKNode+Extensions.swift in Sources */,
+				7C08A8B31FCAFF7F001BBD15 /* StoneNode.swift in Sources */,
 				7C6E213B1FBC8635001676F0 /* CatNode.swift in Sources */,
 				7C6E21531FBDDD44001676F0 /* SKTTimingFunctions.swift in Sources */,
 				7C6E214E1FBDDD44001676F0 /* SKAction+SpecialEffects.swift in Sources */,
