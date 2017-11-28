@@ -87,7 +87,6 @@ public extension SKAction {
     public class func colorGlitchWithScene(scene: SKScene, originalColor: SKColor, duration: TimeInterval) -> SKAction {
         return SKAction.customAction(withDuration: duration) {(node, elapsedTime) in
             if elapsedTime < CGFloat(duration) {
-                Int.random(min: 0, max: 255)
                 scene.backgroundColor = SKColorWithRGB(r: Int.random(min: 0, max: 255), g: Int.random(min: 0, max: 255), b: Int.random(min: 0, max: 255))
             } else {
                 scene.backgroundColor = originalColor
